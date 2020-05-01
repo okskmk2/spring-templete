@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.baeun.belief.BeliefMapper">
+    <select id="getBeliefListByUserId" resultType="com.baeun.belief.BeliefVO">
+        select * from tb_belief_info where owner_id = #{userId} order by belief_id desc
+    </select>
+
+    <insert id="insertBeliefInfo">
+        insert into tb_belief_info
+        (content, belief_desc, owner_id)
+        values
+        (#{content}, #{beliefDesc}, #{ownerId})
+    </insert>
+
+    <delete id='deleteBeliefInfo'>
+        delete from tb_belief_info where belief_id = #{beliefId}
+    </delete>
+
+    <select id="detailBeliefInfo" resultType="com.baeun.belief.BeliefVO">
+        select * from tb_belief_info where belief_id = #{beliefId}
+    </select>
+
+</mapper>
